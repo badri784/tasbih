@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../screen/sabha.dart';
+import 'screen/sabha_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,11 +14,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           brightness: Brightness.dark,
-
-          seedColor: const Color.fromARGB(255, 102, 22, 89),
+          seedColor: const Color.fromARGB(255, 44, 5, 184),
         ),
       ),
-      home: Sabha(),
+      home: const Sabha(),
     );
   }
 }

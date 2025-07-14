@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
-
+import '../screen/azkar_screen.dart';
+import 'drawer.dart';
 import 'package:flutter/material.dart';
 
 class Counter extends StatefulWidget {
@@ -30,6 +31,19 @@ class _CounterState extends State<Counter> {
     super.dispose();
   }
 
+  void openAzkarScreen() async {
+    final selectedZekr = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (ctx) => const AzkarScreen()),
+    );
+
+    if (selectedZekr != null && selectedZekr is String) {
+      setState(() {
+        textediting.text = selectedZekr;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     bool isdark = Theme.of(context).brightness == Brightness.dark;
@@ -47,37 +61,16 @@ class _CounterState extends State<Counter> {
                 ? Theme.of(context).colorScheme.onInverseSurface
                 : Theme.of(context).colorScheme.primary,
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: openAzkarScreen,
+            icon: const Icon(Icons.menu_book),
+            tooltip: 'اختر ذكر',
+          ),
+        ],
         forceMaterialTransparency: false,
       ),
-      drawer: Drawer(
-        child: Column(
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Theme.of(context).colorScheme.primary,
-                    Theme.of(context).colorScheme.primary.withOpacity(1),
-                  ],
-                ),
-              ),
-              child: Row(
-                children: [
-                  const Icon(Icons.settings, size: 35),
-                  const SizedBox(width: 12),
-                  Text(
-                    "Settings",
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.onBackground,
-                      fontSize: 25,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+      drawer: const DrawerContent(),
       floatingActionButton: FloatingActionButton(
         onPressed: resetcounter,
         tooltip: 'Reset Counter',
@@ -95,8 +88,8 @@ class _CounterState extends State<Counter> {
               decoration: const InputDecoration(
                 border: InputBorder.none,
                 label: Padding(
-                  padding: EdgeInsets.only(left: 25),
-                  child: Text(" Enter Text !", style: TextStyle(fontSize: 25)),
+                  padding: EdgeInsets.only(left: 14),
+                  child: Text("Enter Zekr !", style: TextStyle(fontSize: 14)),
                 ),
               ),
               textAlign: TextAlign.center,

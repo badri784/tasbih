@@ -27,7 +27,7 @@ class QiblaScreen extends StatelessWidget {
       ),
       body: const Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [Text("00000000000000000")],
+        children: [Text("404")],
       ),
     );
   }

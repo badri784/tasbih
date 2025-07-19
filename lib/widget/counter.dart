@@ -87,17 +87,21 @@ class _CounterState extends State<Counter> {
               controller: textediting,
               decoration: const InputDecoration(
                 border: InputBorder.none,
-                label: Padding(
-                  padding: EdgeInsets.only(left: 14),
-                  child: Text("Enter Zekr !", style: TextStyle(fontSize: 14)),
-                ),
+                hintText: "⬆️ اختار ذكر",
+                hintFadeDuration: Duration(seconds: 1),
               ),
+
               textAlign: TextAlign.center,
               textInputAction: TextInputAction.done,
+              maxLines: null,
+
               onSubmitted: (_) {
                 FocusScope.of(context).unfocus();
               },
-              style: const TextStyle(fontSize: 33, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.normal,
+              ),
             ),
             Center(
               child: Text(

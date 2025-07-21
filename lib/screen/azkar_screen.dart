@@ -5,6 +5,7 @@ class AzkarScreen extends StatelessWidget {
 
   final List<String> azkarList = const [
     "سبحان الله",
+    "اللهم صل علي محمد ",
     "الحمد لله",
     "الله أكبر",
     "لا إله إلا الله",
@@ -12,7 +13,7 @@ class AzkarScreen extends StatelessWidget {
     "سبحان الله وبحمده",
     "سبحان الله العظيم",
     'سبحان الله وبحمده عدد خلقه ورضا نفسه وزنه عرشه ومداد كلماته  سبحان الله وبحمده سبحان الله العظيم',
-    '',
+    'سُبْحانَ اللهِ وَبِحَمْدِهِ عَدَدَ خَلْقِه ، وَرِضا نَفْسِه ، وَزِنَةَ عَرْشِه ، وَمِدادَ كَلِماتِه.',
   ];
 
   @override
@@ -26,16 +27,20 @@ class AzkarScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: azkarList.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(
-              azkarList[index],
-
-              style: const TextStyle(fontSize: 24),
-              textAlign: TextAlign.center,
-            ),
-            onTap: () {
-              Navigator.pop(context, azkarList[index]); // رجع الذكر
-            },
+          return Column(
+            children: [
+              ListTile(
+                title: Text(
+                  azkarList[index],
+                  style: const TextStyle(fontSize: 24),
+                  textAlign: TextAlign.start,
+                ),
+                onTap: () {
+                  Navigator.pop(context, azkarList[index]); // رجع الذكر
+                },
+              ),
+              const Divider(),
+            ],
           );
         },
       ),

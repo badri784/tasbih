@@ -67,7 +67,6 @@ List<Model> slepping = [
     repeat: 3,
   ),
 ];
-
 List<Model> morningazkar = [
   Model(
     titlezekr: "حديث شريف",

@@ -1,10 +1,9 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:tasbih/screen/morningaskar.dart';
-import 'package:tasbih/screen/sliping_zekr.dart';
-import 'package:tasbih/widget/counter.dart';
 
+import '../screen/morningaskar.dart';
+import '../screen/sliping_zekr.dart';
 import '../screen/evening_zekar.dart';
 import '../screen/post_prayer_azkar.dart';
 

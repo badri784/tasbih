@@ -12,6 +12,7 @@ class Counter extends StatefulWidget {
 
 class _CounterState extends State<Counter> {
   int counter = 0;
+
   void inctementcounter() {
     setState(() {
       counter++;
@@ -25,6 +26,7 @@ class _CounterState extends State<Counter> {
   }
 
   TextEditingController textediting = TextEditingController();
+
   @override
   void dispose() {
     textediting.dispose();
@@ -47,6 +49,7 @@ class _CounterState extends State<Counter> {
   @override
   Widget build(BuildContext context) {
     bool isdark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -68,13 +71,11 @@ class _CounterState extends State<Counter> {
             tooltip: 'اختر ذكر',
           ),
         ],
-        forceMaterialTransparency: false,
       ),
       drawer: const DrawerContent(),
       floatingActionButton: FloatingActionButton(
         onPressed: resetcounter,
         tooltip: 'Reset Counter',
-
         child: const Icon(Icons.restart_alt),
       ),
       body: GestureDetector(
@@ -86,19 +87,30 @@ class _CounterState extends State<Counter> {
             TextField(
               controller: textediting,
               decoration: const InputDecoration(border: InputBorder.none),
-
               textAlign: TextAlign.center,
               textInputAction: TextInputAction.done,
               maxLines: null,
-
               onSubmitted: (_) {
                 FocusScope.of(context).unfocus();
               },
               style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
-            Center(
+            const SizedBox(height: 30),
+
+            /// ✅ Slide-in Animation
+            AnimatedSwitcher(
+              duration: const Duration(milliseconds: 150),
+              transitionBuilder: (child, animation) {
+                final inAnimation = Tween<Offset>(
+                  begin: const Offset(0.0, 1.0), // من تحت
+                  end: Offset.zero,
+                ).animate(animation);
+
+                return SlideTransition(position: inAnimation, child: child);
+              },
               child: Text(
-                counter.toString(),
+                '$counter',
+                key: ValueKey<int>(counter),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).colorScheme.onBackground,
@@ -106,6 +118,7 @@ class _CounterState extends State<Counter> {
                 ),
               ),
             ),
+
             const SizedBox(height: 15),
           ],
         ),

@@ -99,7 +99,7 @@ class _CounterState extends State<Counter> {
 
             /// ✅ Slide-in Animation
             AnimatedSwitcher(
-              duration: const Duration(milliseconds: 150),
+              duration: const Duration(milliseconds: 300),
               transitionBuilder: (child, animation) {
                 final inAnimation = Tween<Offset>(
                   begin: const Offset(0.0, 1.0), // من تحت

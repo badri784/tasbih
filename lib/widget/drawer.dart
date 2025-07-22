@@ -2,8 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:tasbih/screen/morningaskar.dart';
+import 'package:tasbih/screen/sliping_zekr.dart';
+import 'package:tasbih/widget/counter.dart';
 
 import '../screen/evening_zekar.dart';
+import '../screen/post_prayer_azkar.dart';
 
 class DrawerContent extends StatelessWidget {
   const DrawerContent({super.key});
@@ -101,7 +104,7 @@ class DrawerContent extends StatelessWidget {
                     Navigator.of(context).pop();
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => const MorningAzkar(),
+                        builder: (context) => const PostPrayerAzkar(),
                       ),
                     );
                   },
@@ -123,7 +126,7 @@ class DrawerContent extends StatelessWidget {
                     Navigator.of(context).pop();
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => const MorningAzkar(),
+                        builder: (context) => const SlipingZekr(),
                       ),
                     );
                   },

@@ -85,11 +85,7 @@ class _CounterState extends State<Counter> {
           children: [
             TextField(
               controller: textediting,
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                hintText: "⬆️ اختار ذكر",
-                hintFadeDuration: Duration(seconds: 1),
-              ),
+              decoration: const InputDecoration(border: InputBorder.none),
 
               textAlign: TextAlign.center,
               textInputAction: TextInputAction.done,
@@ -98,10 +94,7 @@ class _CounterState extends State<Counter> {
               onSubmitted: (_) {
                 FocusScope.of(context).unfocus();
               },
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.normal,
-              ),
+              style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
             Center(
               child: Text(

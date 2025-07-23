@@ -3,15 +3,32 @@
 import 'package:flutter/material.dart';
 import '../model/model.dart';
 
-class Openzekr extends StatelessWidget {
+class Openzekr extends StatefulWidget {
   const Openzekr({super.key, required this.item});
   final Model item;
+  @override
+  State<Openzekr> createState() => _OpenzekrState();
+}
+
+class _OpenzekrState extends State<Openzekr> {
+  late int count;
+
+  @override
+  void initState() {
+    super.initState();
+    count = widget.item.repeat;
+  }
+
+  void countdown() {
+    count--;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          item.titlezekr,
+          widget.item.titlezekr,
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -40,7 +57,7 @@ class Openzekr extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    item.titlezekr,
+                    widget.item.titlezekr,
                     style: const TextStyle(fontSize: 20),
                   ),
                 ),
@@ -51,7 +68,8 @@ class Openzekr extends StatelessWidget {
                 child: CircleAvatar(
                   backgroundColor: Colors.green,
                   child: Text(
-                    item.repeat.toString(),
+                    count.toString(),
+                    // widget.item.repeat.toString(),
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -78,7 +96,7 @@ class Openzekr extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    item.contant,
+                    widget.item.contant,
                     style: const TextStyle(fontSize: 20),
                   ),
                 ),
@@ -86,7 +104,7 @@ class Openzekr extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 15),
-          if (item.referance != null)
+          if (widget.item.referance != null)
             Stack(
               children: [
                 Container(
@@ -106,7 +124,7 @@ class Openzekr extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
-                      item.referance.toString(),
+                      widget.item.referance.toString(),
                       style: const TextStyle(fontSize: 20),
                     ),
                   ),
@@ -114,7 +132,7 @@ class Openzekr extends StatelessWidget {
               ],
             ),
           const SizedBox(height: 15),
-          if (item.note != null)
+          if (widget.item.note != null)
             Stack(
               children: [
                 Container(
@@ -134,58 +152,34 @@ class Openzekr extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
-                      item.note.toString(),
+                      widget.item.note.toString(),
                       style: const TextStyle(fontSize: 20),
                     ),
                   ),
                 ),
               ],
             ),
-
-          // Padding(
-          //   padding: const EdgeInsets.all(12.0),
-          //   child: Stack(
-          //     children: [
-          //       Container(
-          //         width: double.infinity,
-          //         decoration: BoxDecoration(
-          //           color: Colors.white,
-          //           borderRadius: BorderRadius.circular(12),
-          //           boxShadow: [
-          //             BoxShadow(
-          //               color: Colors.black.withOpacity(0.2),
-          //               blurRadius: 5,
-          //               offset: const Offset(0, 2),
-          //             ),
-          //           ],
-          //         ),
-          //         padding: const EdgeInsets.all(16),
-          //         child: Text(
-          //           item.contant,
-          //           textAlign: TextAlign.justify,
-          //           style: const TextStyle(fontSize: 18, height: 1.6),
-          //           textDirection: TextDirection.rtl,
-          //         ),
-          //       ),
-          //     ],
-          //   ),
-          // ),
-
-          // Text(
-          //   item.note.toString(),
-          //   textAlign: TextAlign.start,
-          //   style: const TextStyle(fontSize: 20),
-          // ),
-          // const SizedBox(height: 30),
-          // const Divider(),
-          // Text(
-          //   item.referance.toString(),
-          //   textAlign: TextAlign.start,
-          //   style: const TextStyle(fontSize: 20),
-          // ),
-          // const SizedBox(height: 30),
-
-          // const Divider(),
+          Container(
+            padding: const EdgeInsets.only(left: 1, right: 1),
+            width: double.infinity,
+            height: 650,
+            child: InkWell(
+              focusColor: Colors.black,
+              onTap: () {
+                if (count <= 0) {
+                  setState(() {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("تم الانتهاء من التكرار ")),
+                    );
+                  });
+                } else {
+                  setState(() {
+                    countdown();
+                  });
+                }
+              },
+            ),
+          ),
         ],
       ),
     );

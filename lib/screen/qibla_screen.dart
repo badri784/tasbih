@@ -12,7 +12,7 @@ class QiblaScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "اتجاه القبله",
+          'اتجاه القبله',
           style: TextStyle(
             fontSize: 28,
             color: Theme.of(context).colorScheme.onBackground,
@@ -27,7 +27,7 @@ class QiblaScreen extends StatelessWidget {
       ),
       body: const Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [Text("404")],
+        children: [Text('404')],
       ),
     );
   }

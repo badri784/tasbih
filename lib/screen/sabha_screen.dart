@@ -34,18 +34,18 @@ class _SabhaState extends State<Sabha> {
         onTap: selectpage,
         items: const [
           BottomNavigationBarItem(
-            label: "سبحه",
+            label: 'سبحه',
             icon: Icon(Icons.library_add),
             tooltip: 'سبحه الكترونية',
           ),
           BottomNavigationBarItem(
-            label: "القران الكريم",
+            label: 'القران الكريم',
             icon: Icon(Icons.menu_book),
           ),
           BottomNavigationBarItem(
-            label: "بوصله",
+            label: 'بوصله',
             icon: Icon(Icons.explore),
-            tooltip: "اتجاه القبله",
+            tooltip: 'اتجاه القبله',
           ),
         ],
       ),

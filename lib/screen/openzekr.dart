@@ -1,5 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import '../model/model.dart';
 
@@ -164,12 +166,35 @@ class _OpenzekrState extends State<Openzekr> {
             width: double.infinity,
             height: 650,
             child: InkWell(
-              focusColor: Colors.black,
+              focusColor: Colors.white,
               onTap: () {
                 if (count <= 0) {
                   setState(() {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("تم الانتهاء من التكرار ")),
+                      SnackBar(
+                        content: const Text(
+                          'تم الانتهاء من التكرار',
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                        backgroundColor: const Color.fromARGB(
+                          255,
+                          36,
+                          117,
+                          189,
+                        ),
+                        behavior: SnackBarBehavior.floating,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        margin: const EdgeInsets.all(12),
+                        duration: const Duration(seconds: 4),
+                        action: SnackBarAction(
+                          label: 'Next',
+                          onPressed: () {
+                            Navigator.of(context).pop(false);
+                          },
+                        ),
+                      ),
                     );
                   });
                 } else {

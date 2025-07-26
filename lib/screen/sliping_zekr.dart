@@ -18,7 +18,6 @@ class SlipingZekr extends StatelessWidget {
               title: Text(item.titlezekr, textAlign: TextAlign.start),
               subtitle: Text(item.contant, textAlign: TextAlign.start),
               trailing: CircleAvatar(child: Text(item.repeat.toString())),
-              // trailing: Text(item.note.toString()),
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => Openzekr(item: item)),

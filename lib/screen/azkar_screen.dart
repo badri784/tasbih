@@ -4,23 +4,23 @@ class AzkarScreen extends StatelessWidget {
   const AzkarScreen({super.key});
 
   final List<String> azkarList = const [
-    "سبحان الله",
-    "اللهم صل علي محمد",
-    "الحمد لله",
-    "الله أكبر",
-    "لا إله إلا الله",
-    "أستغفر الله",
-    "سبحان الله وبحمده",
-    "سبحان الله العظيم",
-    "سبحان الله وبحمده عدد خلقه ورضا نفسه وزنه عرشه ومداد كلماته",
-    "سُبْحانَ اللهِ وَبِحَمْدِهِ عَدَدَ خَلْقِه، وَرِضا نَفْسِه، وَزِنَةَ عَرْشِه، وَمِدادَ كَلِماتِه.",
+    'سبحان الله',
+    'اللهم صل علي محمد',
+    'الحمد لله',
+    'الله أكبر',
+    'لا إله إلا الله',
+    'أستغفر الله',
+    'سبحان الله وبحمده',
+    'سبحان الله العظيم',
+    'سبحان الله وبحمده عدد خلقه ورضا نفسه وزنه عرشه ومداد كلماته',
+    'سُبْحانَ اللهِ وَبِحَمْدِهِ عَدَدَ خَلْقِه، وَرِضا نَفْسِه، وَزِنَةَ عَرْشِه، وَمِدادَ كَلِماتِه.',
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("اختر ذكر", style: TextStyle(fontSize: 24)),
+        title: const Text('اختر ذكر', style: TextStyle(fontSize: 24)),
         centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.primary,
         elevation: 0,

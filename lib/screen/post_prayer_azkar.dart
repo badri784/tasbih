@@ -8,7 +8,7 @@ class PostPrayerAzkar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("الاذكار بعد الصلاه المفروضة"),
+        title: const Text('الاذكار بعد الصلاه المفروضة'),
         centerTitle: true,
       ),
       body: ListView.builder(

@@ -53,7 +53,7 @@ class _CounterState extends State<Counter> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "سبحه الكترونيه",
+          'سبحه الكترونيه',
           style: TextStyle(
             fontSize: 28,
             color: Theme.of(context).colorScheme.onBackground,

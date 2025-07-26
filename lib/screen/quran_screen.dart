@@ -10,7 +10,7 @@ class QuranScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "القران الكريم",
+          'القران الكريم',
           style: TextStyle(
             fontSize: 28,
             color: Theme.of(context).colorScheme.onBackground,
@@ -25,7 +25,7 @@ class QuranScreen extends StatelessWidget {
       ),
       body: const Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [Text("404")],
+        children: [Text('404')],
       ),
     );
   }

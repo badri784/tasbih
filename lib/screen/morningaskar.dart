@@ -18,7 +18,6 @@ class MorningAzkar extends StatelessWidget {
               title: Text(itemzekr.titlezekr, textAlign: TextAlign.start),
               subtitle: Text(itemzekr.contant, textAlign: TextAlign.start),
               trailing: CircleAvatar(child: Text(itemzekr.repeat.toString())),
-              // trailing: Text(item.note.toString()),
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(

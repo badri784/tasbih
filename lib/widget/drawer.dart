@@ -29,7 +29,7 @@ class DrawerContent extends StatelessWidget {
                   const Icon(Icons.settings, size: 35),
                   const SizedBox(width: 12),
                   Text(
-                    "الاعدادات",
+                    'الاعدادات',
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.onBackground,
                       fontSize: 25,
@@ -48,7 +48,7 @@ class DrawerContent extends StatelessWidget {
                       SizedBox(width: 10),
                       SizedBox(width: 7),
                       Text(
-                        "اذكار الصباح",
+                        'اذكار الصباح',
                         style: TextStyle(fontSize: 20),
                         textAlign: TextAlign.center,
                       ),
@@ -70,7 +70,7 @@ class DrawerContent extends StatelessWidget {
                       SizedBox(width: 10),
                       SizedBox(width: 7),
                       Text(
-                        "اذكار المساء",
+                        'اذكار المساء',
                         style: TextStyle(fontSize: 20),
                         textAlign: TextAlign.center,
                       ),
@@ -92,7 +92,7 @@ class DrawerContent extends StatelessWidget {
                       SizedBox(width: 10),
                       SizedBox(width: 7),
                       Text(
-                        "الأذكار بعد الصلاة ",
+                        'الأذكار بعد الصلاة ',
                         style: TextStyle(fontSize: 20),
                         textAlign: TextAlign.center,
                       ),
@@ -114,7 +114,7 @@ class DrawerContent extends StatelessWidget {
                       SizedBox(width: 10),
                       SizedBox(width: 7),
                       Text(
-                        "اذكار النوم",
+                        'اذكار النوم',
                         style: TextStyle(fontSize: 20),
                         textAlign: TextAlign.center,
                       ),

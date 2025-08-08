@@ -1,7 +1,8 @@
 // ignore_for_file: deprecated_member_use
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tasbih/StateMangment/counter_provider.dart';
+import '../StateMangment/counter_provider.dart';
+import '../StateMangment/open_zekr_provider.dart';
 
 import '../screen/azkar_screen.dart';
 import 'drawer.dart';
@@ -23,15 +24,12 @@ class _CounterState extends ConsumerState<Counter> {
   }
 
   void openAzkarScreen() async {
-    final selectedZekr = await Navigator.push(
+    final result = await Navigator.push(
       context,
       MaterialPageRoute(builder: (ctx) => const AzkarScreen()),
     );
-
-    if (selectedZekr != null && selectedZekr is String) {
-      setState(() {
-        textediting.text = selectedZekr;
-      });
+    if (result != null && result is String) {
+      ref.read(selectedzekrprovider.notifier).selectedZekr;
     }
   }
 

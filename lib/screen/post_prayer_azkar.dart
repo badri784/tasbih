@@ -8,9 +8,19 @@ class PostPrayerAzkar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('الاذكار بعد الصلاه المفروضة'),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+        ),
+
+        backgroundColor: const Color.fromARGB(255, 36, 73, 104),
+        title: const Text(
+          'الاذكار بعد الصلاه المفروضة',
+          style: TextStyle(fontSize: 28),
+        ),
         centerTitle: true,
+        elevation: 4,
       ),
+
       body: ListView.builder(
         itemCount: postPrayerAzkar.length,
         itemBuilder: (context, index) {

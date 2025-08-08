@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:tasbih/screen/morningaskar.dart';
-import 'package:tasbih/screen/sliping_zekr.dart';
+import 'package:tasbih/screen/sleeping_zekr.dart';
 import '../screen/evening_zekar.dart';
 import '../screen/post_prayer_azkar.dart';
 

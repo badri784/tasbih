@@ -20,11 +20,16 @@ class AzkarScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('اختر ذكر', style: TextStyle(fontSize: 24)),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+        ),
+
+        backgroundColor: const Color.fromARGB(255, 36, 73, 104),
+        title: const Text('اختر ذكر', style: TextStyle(fontSize: 28)),
         centerTitle: true,
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        elevation: 0,
+        elevation: 4,
       ),
+
       body: ListView.builder(
         padding: const EdgeInsets.all(12),
         itemCount: azkarList.length,

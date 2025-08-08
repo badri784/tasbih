@@ -1,4 +1,6 @@
 // ignore_for_file: deprecated_member_use
+import 'package:flutter/services.dart';
+
 import '../screen/azkar_screen.dart';
 import 'drawer.dart';
 import 'package:flutter/material.dart';
@@ -48,34 +50,32 @@ class _CounterState extends State<Counter> {
 
   @override
   Widget build(BuildContext context) {
-    bool isdark = Theme.of(context).brightness == Brightness.dark;
-
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'سبحه الكترونيه',
-          style: TextStyle(
-            fontSize: 28,
-            color: Theme.of(context).colorScheme.onBackground,
-          ),
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
         ),
-        backgroundColor:
-            isdark
-                ? Theme.of(context).colorScheme.onInverseSurface
-                : Theme.of(context).colorScheme.primary,
+
+        backgroundColor: const Color.fromARGB(255, 36, 73, 104),
+        title: const Text('سبحه الكترونيه', style: TextStyle(fontSize: 28)),
         centerTitle: true,
+        elevation: 4,
         actions: [
           IconButton(
             onPressed: openAzkarScreen,
             icon: const Icon(Icons.menu_book),
             tooltip: 'اختر ذكر',
+            color: const Color.fromARGB(255, 133, 163, 187),
           ),
         ],
       ),
+
       drawer: const DrawerContent(),
       floatingActionButton: FloatingActionButton(
         onPressed: resetcounter,
         tooltip: 'Reset Counter',
+        backgroundColor: const Color.fromARGB(255, 79, 127, 167),
         child: const Icon(Icons.restart_alt),
       ),
       body: GestureDetector(
@@ -90,19 +90,17 @@ class _CounterState extends State<Counter> {
               textAlign: TextAlign.center,
               textInputAction: TextInputAction.done,
               maxLines: null,
-              onSubmitted: (_) {
+              onTapOutside: (_) {
                 FocusScope.of(context).unfocus();
               },
               style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 30),
-
-            /// ✅ Slide-in Animation
             AnimatedSwitcher(
               duration: const Duration(milliseconds: 300),
               transitionBuilder: (child, animation) {
                 final inAnimation = Tween<Offset>(
-                  begin: const Offset(0.0, 1.0), // من تحت
+                  begin: const Offset(0.0, 1.0),
                   end: Offset.zero,
                 ).animate(animation);
 

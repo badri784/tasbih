@@ -1,7 +1,5 @@
 // ignore_for_file: deprecated_member_use
 
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import '../model/model.dart';
 
@@ -29,12 +27,20 @@ class _OpenzekrState extends State<Openzekr> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+        ),
+
+        backgroundColor: const Color.fromARGB(255, 36, 73, 104),
         title: Text(
           widget.item.titlezekr,
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
+
+        elevation: 4,
       ),
+
       body: ListView(
         padding: const EdgeInsets.only(left: 10, right: 15),
         children: [

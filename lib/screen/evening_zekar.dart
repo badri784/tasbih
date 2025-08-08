@@ -8,7 +8,17 @@ class EveningZekar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('اذكار المساء'), centerTitle: true),
+      appBar: AppBar(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+        ),
+
+        backgroundColor: const Color.fromARGB(255, 36, 73, 104),
+        title: const Text('اذكار المساء', style: TextStyle(fontSize: 28)),
+        centerTitle: true,
+        elevation: 4,
+      ),
+
       body: ListView.builder(
         itemCount: eveningAzkar.length,
         itemBuilder: (context, index) {

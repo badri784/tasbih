@@ -1,34 +1,21 @@
 // ignore_for_file: deprecated_member_use
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tasbih/StateMangment/counter_provider.dart';
 
 import '../screen/azkar_screen.dart';
 import 'drawer.dart';
 import 'package:flutter/material.dart';
 
-class Counter extends StatefulWidget {
+class Counter extends ConsumerStatefulWidget {
   const Counter({super.key});
 
   @override
-  State<Counter> createState() => _CounterState();
+  ConsumerState<Counter> createState() => _CounterState();
 }
 
-class _CounterState extends State<Counter> {
-  int counter = 0;
-
-  void inctementcounter() {
-    setState(() {
-      counter++;
-    });
-  }
-
-  void resetcounter() {
-    setState(() {
-      counter = 0;
-    });
-  }
-
+class _CounterState extends ConsumerState<Counter> {
   TextEditingController textediting = TextEditingController();
-
   @override
   void dispose() {
     textediting.dispose();
@@ -73,13 +60,13 @@ class _CounterState extends State<Counter> {
 
       drawer: const DrawerContent(),
       floatingActionButton: FloatingActionButton(
-        onPressed: resetcounter,
+        onPressed: ref.read(counterprov.notifier).downCount,
         tooltip: 'Reset Counter',
         backgroundColor: const Color.fromARGB(255, 79, 127, 167),
         child: const Icon(Icons.restart_alt),
       ),
       body: GestureDetector(
-        onTap: inctementcounter,
+        onTap: ref.read(counterprov.notifier).incrementCounter,
         behavior: HitTestBehavior.opaque,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -107,8 +94,8 @@ class _CounterState extends State<Counter> {
                 return SlideTransition(position: inAnimation, child: child);
               },
               child: Text(
-                '$counter',
-                key: ValueKey<int>(counter),
+                ref.watch(counterprov).toString(),
+                key: ValueKey<int>(ref.watch(counterprov)),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).colorScheme.onBackground,

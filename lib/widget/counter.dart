@@ -1,4 +1,6 @@
 // ignore_for_file: deprecated_member_use
+import 'dart:developer';
+
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../StateMangment/counter_provider.dart';
@@ -26,11 +28,14 @@ class _CounterState extends ConsumerState<Counter> {
   void openAzkarScreen() async {
     final result = await Navigator.push(
       context,
-      MaterialPageRoute(builder: (ctx) => const AzkarScreen()),
+      MaterialPageRoute(builder: (context) => const AzkarScreen()),
     );
+    log(result);
     if (result != null && result is String) {
-      ref.read(selectedzekrprovider.notifier).selectedZekr;
+      ref.read(selectedzekrprovider.notifier).setSelected(result);
+      textediting.text = result;
     }
+    log(textediting.text.toString());
   }
 
   @override
@@ -43,7 +48,10 @@ class _CounterState extends ConsumerState<Counter> {
         ),
 
         backgroundColor: const Color.fromARGB(255, 36, 73, 104),
-        title: const Text('سبحه الكترونيه', style: TextStyle(fontSize: 28)),
+        title: const Text(
+          'سبحه الكترونيه',
+          style: TextStyle(fontSize: 28, color: Colors.white),
+        ),
         centerTitle: true,
         elevation: 4,
         actions: [

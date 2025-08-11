@@ -1,30 +1,18 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tasbih/StateMangment/zeker_detail_provider.dart';
 import '../model/model.dart';
 
-class Openzekr extends StatefulWidget {
-  const Openzekr({super.key, required this.item});
+class OpenZekerDetail extends ConsumerWidget {
+  const OpenZekerDetail({super.key, required this.item});
   final Model item;
-  @override
-  State<Openzekr> createState() => _OpenzekrState();
-}
-
-class _OpenzekrState extends State<Openzekr> {
-  late int count;
 
   @override
-  void initState() {
-    super.initState();
-    count = widget.item.repeat;
-  }
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentCount = ref.watch(zekerdetail(item.repeat));
 
-  void countdown() {
-    count--;
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         shape: const RoundedRectangleBorder(
@@ -32,7 +20,7 @@ class _OpenzekrState extends State<Openzekr> {
         ),
         backgroundColor: const Color.fromARGB(255, 36, 73, 104),
         title: Text(
-          widget.item.titlezekr,
+          item.titlezekr,
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -65,7 +53,7 @@ class _OpenzekrState extends State<Openzekr> {
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
-                      widget.item.titlezekr,
+                      item.titlezekr,
                       style: const TextStyle(fontSize: 20),
                     ),
                   ),
@@ -77,7 +65,7 @@ class _OpenzekrState extends State<Openzekr> {
                 child: CircleAvatar(
                   backgroundColor: Colors.green,
                   child: Text(
-                    count.toString(),
+                    ref.read(zekerdetail(item.repeat)).toString(),
                     // widget.item.repeat.toString(),
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
@@ -106,7 +94,7 @@ class _OpenzekrState extends State<Openzekr> {
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
-                      widget.item.contant,
+                      item.contant,
                       style: const TextStyle(fontSize: 20),
                     ),
                   ),
@@ -115,7 +103,7 @@ class _OpenzekrState extends State<Openzekr> {
             ),
           ),
           const SizedBox(height: 15),
-          if (widget.item.referance != null)
+          if (item.referance != null)
             Card.outlined(
               child: Stack(
                 children: [
@@ -136,7 +124,7 @@ class _OpenzekrState extends State<Openzekr> {
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Text(
-                        widget.item.referance.toString(),
+                        item.referance.toString(),
                         style: const TextStyle(fontSize: 20),
                       ),
                     ),
@@ -145,7 +133,7 @@ class _OpenzekrState extends State<Openzekr> {
               ),
             ),
           const SizedBox(height: 15),
-          if (widget.item.note != null)
+          if (item.note != null)
             Card.outlined(
               child: Stack(
                 children: [
@@ -166,7 +154,7 @@ class _OpenzekrState extends State<Openzekr> {
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Text(
-                        widget.item.note.toString(),
+                        item.note.toString(),
                         style: const TextStyle(fontSize: 20),
                       ),
                     ),
@@ -181,39 +169,31 @@ class _OpenzekrState extends State<Openzekr> {
             child: InkWell(
               focusColor: Colors.white,
               onTap: () {
-                if (count <= 0) {
-                  setState(() {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: const Text(
-                          'تم الانتهاء من التكرار',
-                          style: TextStyle(color: Colors.white, fontSize: 18),
-                        ),
-                        backgroundColor: const Color.fromARGB(
-                          255,
-                          36,
-                          117,
-                          189,
-                        ),
-                        behavior: SnackBarBehavior.floating,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18),
-                        ),
-                        margin: const EdgeInsets.all(12),
-                        duration: const Duration(seconds: 4),
-                        action: SnackBarAction(
-                          label: 'Next',
-                          onPressed: () {
-                            Navigator.of(context).pop(false);
-                          },
-                        ),
+                if (currentCount <= 0) {
+                  ref.watch(zekerdetail(item.repeat).notifier).zeroOrLess();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: const Text(
+                        'تم الانتهاء من التكرار',
+                        style: TextStyle(color: Colors.white, fontSize: 18),
                       ),
-                    );
-                  });
+                      backgroundColor: const Color.fromARGB(255, 36, 117, 189),
+                      behavior: SnackBarBehavior.floating,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18),
+                      ),
+                      margin: const EdgeInsets.all(12),
+                      duration: const Duration(seconds: 4),
+                      action: SnackBarAction(
+                        label: 'Next',
+                        onPressed: () {
+                          Navigator.of(context).pop(false);
+                        },
+                      ),
+                    ),
+                  );
                 } else {
-                  setState(() {
-                    countdown();
-                  });
+                  ref.watch(zekerdetail(item.repeat).notifier).countdown();
                 }
               },
             ),

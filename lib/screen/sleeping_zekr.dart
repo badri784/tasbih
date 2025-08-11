@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../screen/openzekr.dart';
+import 'openzekr_detail.dart';
 import '../model/model.dart';
 
 class SlipingZekr extends StatelessWidget {
@@ -29,7 +29,9 @@ class SlipingZekr extends StatelessWidget {
               trailing: CircleAvatar(child: Text(item.repeat.toString())),
               onTap: () {
                 Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => Openzekr(item: item)),
+                  MaterialPageRoute(
+                    builder: (context) => OpenZekerDetail(item: item),
+                  ),
                 );
               },
             ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../model/model.dart';
-import 'openzekr.dart';
+import 'openzekr_detail.dart';
 
 class MorningAzkar extends StatelessWidget {
   const MorningAzkar({super.key});
@@ -37,7 +37,7 @@ class MorningAzkar extends StatelessWidget {
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => Openzekr(item: itemzekr),
+                        builder: (context) => OpenZekerDetail(item: itemzekr),
                       ),
                     );
                   },

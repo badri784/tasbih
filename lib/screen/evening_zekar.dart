@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tasbih/screen/openzekr.dart';
+import 'package:tasbih/screen/openzekr_detail.dart';
 import '../model/model.dart';
 
 class EveningZekar extends StatelessWidget {
@@ -32,7 +32,7 @@ class EveningZekar extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => Openzekr(item: itemzekr),
+                    builder: (context) => OpenZekerDetail(item: itemzekr),
                   ),
                 );
               },

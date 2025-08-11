@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../model/model.dart';
-import 'openzekr.dart';
+import 'openzekr_detail.dart';
 
 class PostPrayerAzkar extends StatelessWidget {
   const PostPrayerAzkar({super.key});
@@ -32,7 +32,9 @@ class PostPrayerAzkar extends StatelessWidget {
               trailing: CircleAvatar(child: Text(item.repeat.toString())),
               onTap: () {
                 Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => Openzekr(item: item)),
+                  MaterialPageRoute(
+                    builder: (context) => OpenZekerDetail(item: item),
+                  ),
                 );
               },
             ),

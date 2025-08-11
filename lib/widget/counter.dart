@@ -1,12 +1,11 @@
 // ignore_for_file: deprecated_member_use
-import 'dart:developer';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tasbih/StateMangment/open_zekr_provider.dart';
+import 'package:tasbih/screen/azkar_screen.dart';
 import '../StateMangment/counter_provider.dart';
-import '../StateMangment/open_zekr_provider.dart';
 
-import '../screen/azkar_screen.dart';
 import 'drawer.dart';
 import 'package:flutter/material.dart';
 
@@ -25,17 +24,15 @@ class _CounterState extends ConsumerState<Counter> {
     super.dispose();
   }
 
-  void openAzkarScreen() async {
-    final result = await Navigator.push(
+  void openZekrScreen() async {
+    final result = await Navigator.of(
       context,
-      MaterialPageRoute(builder: (context) => const AzkarScreen()),
-    );
-    log(result);
+    ).push(MaterialPageRoute(builder: (ctx) => const AzkarScreen()));
+
     if (result != null && result is String) {
-      ref.read(selectedzekrprovider.notifier).setSelected(result);
+      ref.read(selectedzekr.notifier).setselected(result);
       textediting.text = result;
     }
-    log(textediting.text.toString());
   }
 
   @override
@@ -56,7 +53,7 @@ class _CounterState extends ConsumerState<Counter> {
         elevation: 4,
         actions: [
           IconButton(
-            onPressed: openAzkarScreen,
+            onPressed: openZekrScreen,
             icon: const Icon(Icons.menu_book),
             tooltip: 'اختر ذكر',
             color: const Color.fromARGB(255, 133, 163, 187),

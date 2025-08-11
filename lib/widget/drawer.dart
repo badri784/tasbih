@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:tasbih/screen/morningaskar.dart';
+import 'package:tasbih/screen/settings_secreen.dart';
 import 'package:tasbih/screen/sleeping_zekr.dart';
 import '../screen/evening_zekar.dart';
 import '../screen/post_prayer_azkar.dart';
@@ -17,16 +18,20 @@ class DrawerContent extends StatelessWidget {
           children: [
             DrawerHeader(
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Theme.of(context).colorScheme.primary,
-                    Theme.of(context).colorScheme.primary.withOpacity(0.9),
-                  ],
-                ),
+                color: Theme.of(context).colorScheme.surface,
               ),
               child: Row(
                 children: [
-                  const Icon(Icons.settings, size: 35),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (ctx) => const SettingsSecreen(),
+                        ),
+                      );
+                    },
+                    icon: const Icon(Icons.settings, size: 50),
+                  ),
                   const SizedBox(width: 12),
                   Text(
                     'الاعدادات',

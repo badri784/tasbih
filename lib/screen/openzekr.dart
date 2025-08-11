@@ -30,7 +30,6 @@ class _OpenzekrState extends State<Openzekr> {
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
         ),
-
         backgroundColor: const Color.fromARGB(255, 36, 73, 104),
         title: Text(
           widget.item.titlezekr,
@@ -48,25 +47,27 @@ class _OpenzekrState extends State<Openzekr> {
 
           Stack(
             children: [
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(1),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
-                      blurRadius: 5,
-                      offset: const Offset(0, 2),
+              Card.outlined(
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(1),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.surface,
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        blurRadius: 5,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      widget.item.titlezekr,
+                      style: const TextStyle(fontSize: 20),
                     ),
-                  ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    widget.item.titlezekr,
-                    style: const TextStyle(fontSize: 20),
                   ),
                 ),
               ),
@@ -85,41 +86,14 @@ class _OpenzekrState extends State<Openzekr> {
             ],
           ),
           const SizedBox(height: 15),
-          Stack(
-            children: [
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(1),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
-                      blurRadius: 5,
-                      offset: const Offset(0, 2),
-                    ),
-                  ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    widget.item.contant,
-                    style: const TextStyle(fontSize: 20),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 15),
-          if (widget.item.referance != null)
-            Stack(
+          Card.outlined(
+            child: Stack(
               children: [
                 Container(
                   width: double.infinity,
                   padding: const EdgeInsets.all(1),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.surface,
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(
@@ -132,40 +106,73 @@ class _OpenzekrState extends State<Openzekr> {
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
-                      widget.item.referance.toString(),
+                      widget.item.contant,
                       style: const TextStyle(fontSize: 20),
                     ),
                   ),
                 ),
               ],
             ),
+          ),
           const SizedBox(height: 15),
-          if (widget.item.note != null)
-            Stack(
-              children: [
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(1),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(16),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
-                        blurRadius: 5,
-                        offset: const Offset(0, 2),
+          if (widget.item.referance != null)
+            Card.outlined(
+              child: Stack(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(1),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.surface,
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          blurRadius: 5,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        widget.item.referance.toString(),
+                        style: const TextStyle(fontSize: 20),
                       ),
-                    ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Text(
-                      widget.item.note.toString(),
-                      style: const TextStyle(fontSize: 20),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
+            ),
+          const SizedBox(height: 15),
+          if (widget.item.note != null)
+            Card.outlined(
+              child: Stack(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(1),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.surface,
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          blurRadius: 5,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        widget.item.note.toString(),
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           Container(
             padding: const EdgeInsets.only(left: 1, right: 1),

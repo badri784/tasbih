@@ -2,12 +2,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class OpenZekrProvider extends StateNotifier<String> {
   OpenZekrProvider() : super('');
-
-  void setSelected(String zekr) => state = zekr;
+  void setselected(String result) {
+    state = result;
+  }
 }
 
-final selectedzekrprovider = StateNotifierProvider<OpenZekrProvider, String>((
-  _,
-) {
-  return OpenZekrProvider();
-});
+final selectedzekr = StateNotifierProvider<OpenZekrProvider, String>(
+  (_) => OpenZekrProvider(),
+);

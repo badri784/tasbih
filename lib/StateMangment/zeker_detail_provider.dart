@@ -8,9 +8,7 @@ class ZekerDetailProvider extends StateNotifier<int> {
   }
 
   void zeroOrLess() {
-    if (state <= 0) {
-      return;
-    }
+    state = 0;
   }
 }
 

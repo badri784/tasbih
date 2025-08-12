@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tasbih/StateMangment/snak_bar.dart';
 import 'package:tasbih/StateMangment/zeker_detail_provider.dart';
 import '../model/model.dart';
 
@@ -11,7 +12,7 @@ class OpenZekerDetail extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentCount = ref.watch(zekerdetail(item.repeat));
+    final int currentCount = ref.watch(zekerdetail(item.repeat));
 
     return Scaffold(
       appBar: AppBar(
@@ -24,8 +25,6 @@ class OpenZekerDetail extends ConsumerWidget {
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-
-        elevation: 4,
       ),
 
       body: ListView(
@@ -61,12 +60,11 @@ class OpenZekerDetail extends ConsumerWidget {
               ),
               Positioned(
                 left: 14,
-                top: 10,
+                top: 14,
                 child: CircleAvatar(
                   backgroundColor: Colors.green,
                   child: Text(
                     ref.read(zekerdetail(item.repeat)).toString(),
-                    // widget.item.repeat.toString(),
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -169,29 +167,51 @@ class OpenZekerDetail extends ConsumerWidget {
             child: InkWell(
               focusColor: Colors.white,
               onTap: () {
+                final isSnackBarVisible = ref.read(snackBarVisibilityProvider);
+                final snackBarController = ScaffoldMessenger.of(context);
+
                 if (currentCount <= 0) {
-                  ref.watch(zekerdetail(item.repeat).notifier).zeroOrLess();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: const Text(
-                        'تم الانتهاء من التكرار',
-                        style: TextStyle(color: Colors.white, fontSize: 18),
-                      ),
-                      backgroundColor: const Color.fromARGB(255, 36, 117, 189),
-                      behavior: SnackBarBehavior.floating,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18),
-                      ),
-                      margin: const EdgeInsets.all(12),
-                      duration: const Duration(seconds: 4),
-                      action: SnackBarAction(
-                        label: 'Next',
-                        onPressed: () {
-                          Navigator.of(context).pop(false);
-                        },
-                      ),
-                    ),
-                  );
+                  if (!isSnackBarVisible) {
+                    ref.read(snackBarVisibilityProvider.notifier).show();
+                    ref.watch(zekerdetail(item.repeat).notifier).zeroOrLess();
+                    snackBarController
+                        .showSnackBar(
+                          SnackBar(
+                            content: const Text(
+                              'تم الانتهاء من التكرار',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                              ),
+                            ),
+                            backgroundColor: const Color.fromARGB(
+                              255,
+                              36,
+                              117,
+                              189,
+                            ),
+                            behavior: SnackBarBehavior.floating,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            margin: const EdgeInsets.all(12),
+                            duration: const Duration(seconds: 4),
+                            action: SnackBarAction(
+                              label: 'Next',
+                              onPressed: () {
+                                Navigator.of(context).pop(false);
+                              },
+                            ),
+                          ),
+                        )
+                        .closed
+                        .then(
+                          (_) =>
+                              ref
+                                  .read(snackBarVisibilityProvider.notifier)
+                                  .hide(),
+                        );
+                  }
                 } else {
                   ref.watch(zekerdetail(item.repeat).notifier).countdown();
                 }

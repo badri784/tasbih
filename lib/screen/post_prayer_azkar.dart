@@ -8,35 +8,32 @@ class PostPrayerAzkar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
-        ),
-
-        backgroundColor: const Color.fromARGB(255, 36, 73, 104),
         title: const Text(
           'الاذكار بعد الصلاه المفروضة',
           style: TextStyle(fontSize: 28),
         ),
-        centerTitle: true,
-        elevation: 4,
       ),
 
       body: ListView.builder(
         itemCount: postPrayerAzkar.length,
         itemBuilder: (context, index) {
           final item = postPrayerAzkar[index];
-          return Card.outlined(
-            child: ListTile(
-              title: Text(item.titlezekr, textAlign: TextAlign.start),
-              subtitle: Text(item.contant, textAlign: TextAlign.start),
-              trailing: CircleAvatar(child: Text(item.repeat.toString())),
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => OpenZekerDetail(item: item),
-                  ),
-                );
-              },
+          return Hero(
+            tag: 'post',
+            child: Card.outlined(
+              key: const ValueKey(Model),
+              child: ListTile(
+                title: Text(item.titlezekr, textAlign: TextAlign.start),
+                subtitle: Text(item.contant, textAlign: TextAlign.start),
+                trailing: CircleAvatar(child: Text(item.repeat.toString())),
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => OpenZekerDetail(item: item),
+                    ),
+                  );
+                },
+              ),
             ),
           );
         },

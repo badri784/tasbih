@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ZekerDetailProvider extends StateNotifier<int> {
-  ZekerDetailProvider(int initalValue) : super(initalValue);
+  ZekerDetailProvider(int initialValue) : super(initialValue);
 
   void countdown() {
     state--;
@@ -13,7 +13,5 @@ class ZekerDetailProvider extends StateNotifier<int> {
 }
 
 final zekerdetail = StateNotifierProvider.family<ZekerDetailProvider, int, int>(
-  (ref, repeatValue) {
-    return ZekerDetailProvider(repeatValue);
-  },
+  (ref, repeatValue) => ZekerDetailProvider(repeatValue),
 );

@@ -1,10 +1,11 @@
 class Model {
   Model({
     required this.titlezekr,
-    this.referance,
-    this.note,
+
     required this.contant,
     required this.repeat,
+    this.referance,
+    this.note,
   });
   final String titlezekr;
   final String contant;

@@ -25,16 +25,34 @@ class MyApp extends ConsumerWidget {
 
       //light Theme
       theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+          ),
+
+          backgroundColor: Color.fromARGB(255, 36, 73, 104),
+
+          centerTitle: true,
+          elevation: 4,
+        ),
         colorScheme: ColorScheme.fromSeed(
           brightness: Brightness.light,
           seedColor: const Color.fromARGB(255, 44, 5, 184),
         ),
-        // drawerTheme: DrawerThemeData(
-        //   backgroundColor: Color.fromARGB(200, 52, 50, 144),
-        // ),
       ),
       // dark Theme
       darkTheme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+          ),
+
+          backgroundColor: Color.fromARGB(255, 36, 73, 104),
+
+          centerTitle: true,
+          elevation: 4,
+        ),
+
         colorScheme: ColorScheme.fromSeed(
           brightness: Brightness.dark,
           seedColor: const Color.fromARGB(255, 44, 5, 184),
@@ -44,7 +62,7 @@ class MyApp extends ConsumerWidget {
       themeMode: ref.watch(themeModePro),
       themeAnimationCurve: Curves.fastLinearToSlowEaseIn,
       themeAnimationDuration: const Duration(milliseconds: 752),
-      home: const Sabha(),
+      home: Sabha(),
     );
   }
 }

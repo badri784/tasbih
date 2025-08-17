@@ -1,37 +1,27 @@
 // ignore_for_file: deprecated_member_use
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tasbih/StateMangment/nav_bar_provider.dart';
+
 import 'qibla_screen.dart';
 import 'quran_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:tasbih/widget/counter.dart';
 
-class Sabha extends StatefulWidget {
-  const Sabha({super.key});
+class Sabha extends ConsumerWidget {
+  Sabha({super.key});
 
+  final pages = [const Counter(), const QuranScreen(), const QiblaScreen()];
   @override
-  State<Sabha> createState() => _SabhaState();
-}
-
-class _SabhaState extends State<Sabha> {
-  int selectPageIdex = 0;
-  void selectpage(int index) {
-    setState(() {
-      selectPageIdex = index;
-    });
-  }
-
-  final List<Widget> pages = [
-    const Counter(),
-    const QuranScreen(),
-    const QiblaScreen(),
-  ];
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentIndex = ref.watch(navBarProvider);
     return Scaffold(
-      body: pages[selectPageIdex],
+      body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: selectPageIdex,
-        onTap: selectpage,
+        currentIndex: currentIndex,
+        onTap: (index) {
+          ref.read(navBarProvider.notifier).setscreen(index);
+        },
         items: const [
           BottomNavigationBarItem(
             label: 'سبحه',

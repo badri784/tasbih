@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tasbih/StateMangment/theme_mode_provider.dart';
+import 'StateMangment/theme_mode_provider.dart';
 import 'screen/sabha_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
-void main() {
+void main() async {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  await Future.delayed(const Duration(seconds: 1));
+  FlutterNativeSplash.remove();
+
   runApp(const ProviderScope(child: MyApp()));
 }
 
